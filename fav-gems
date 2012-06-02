@@ -3,3 +3,4 @@ echo \
     rails \
     pry-{doc,disasm,exception_explorer,git,nav,pretty-numeric,rails,stack_explorer,vterm_aliases} \
     rails-console-pry \
+    github-markup \
