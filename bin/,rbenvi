@@ -1,0 +1,35 @@
+#!/bin/bash -e
+## Install rbenv
+# See: https://github.com/sstephenson/rbenv
+
+# Maybe move to git-dots ?
+git-clone-or-update() {
+    if [ -d $2 ]; then
+        (set -x; cd $2; git pull)
+    else
+        git clone $1 $2
+    fi
+}
+
+init-dotfiles() {
+    for n in ~/.bash_profile ~/.zshenv; do
+        if ! grep /.rbenv/bin $n >/dev/null 2>&1; then
+            echo Adding .rbenv PATH line to $n
+            echo '[ -d ~/.rbenv ] && ...path-prepend ~.rbenv/bin' >> $n
+        fi
+        if ! grep 'rbenv init' $n >/dev/null 2>&1; then
+            echo Adding rbenv init line to $n
+            echo 'type rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"' >> $n
+        fi
+    done
+}
+
+cd
+git-clone-or-update git://github.com/sstephenson/rbenv.git .rbenv
+init-dotfiles
+mkdir -p ~/.rbenv/plugins
+cd ~/.rbenv/plugins
+git-clone-or-update git://github.com/sstephenson/ruby-build.git ruby-build
+cat <<EOT
+Now you should be able to \`[32mrbenv install …[0m\` (with tabcompletion!)
+EOT
