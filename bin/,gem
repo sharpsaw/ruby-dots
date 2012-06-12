@@ -1,0 +1,14 @@
+#!/bin/bash -xe
+## "gem", but backgrounds docs generation for much speed.
+if [[ $1 = install ]]; then
+    shift
+    gem install --no-rdoc --no-ri "$@"
+    tmpfile=/tmp/gem-rdoc-$$
+    (gem rdoc --all &> $tmpfile && rm $tmpfile) &
+    disown
+else
+    gem "$@"
+fi
+
+# TODO: examine the options from #ruby's shadoi —
+# https://gist.github.com/2920809
