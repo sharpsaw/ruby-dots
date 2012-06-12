@@ -1,0 +1,8 @@
+#!/bin/sh
+## Quite a hack to counter Gentoo's ruby1.8's viciousness.
+if [ -f /etc/gentoo-release ] &&
+        expr `which ruby` : '.*\.rbenv/' >& /dev/null &&
+        [ "-rauto_gem" = "$RUBYOPT" ]; then
+    unset RUBYOPT
+    echo "(Safely recovered from the wrath of /etc/env.d/10rubygems)"
+fi

@@ -15,7 +15,7 @@ init-dotfiles() {
     for n in ~/.bash_profile ~/.zshenv; do
         if ! grep /.rbenv/bin $n >/dev/null 2>&1; then
             echo Adding .rbenv PATH line to $n
-            echo '[ -d ~/.rbenv ] && ...path-prepend ~.rbenv/bin' >> $n
+            echo '[ -d ~/.rbenv ] && ...path-prepend ~/.rbenv/bin' >> $n
         fi
         if ! grep 'rbenv init' $n >/dev/null 2>&1; then
             echo Adding rbenv init line to $n
