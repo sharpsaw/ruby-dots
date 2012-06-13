@@ -1,0 +1,9 @@
+#!/bin/sh -xe
+## Browse HAML — uses sane-dots/bin/,b to open the output from `haml`
+if type haml &> /dev/null; then
+    echo -e "\e[34mNo \`haml\` found… running ,gem install haml"
+    ,gem install haml
+fi
+OUT=/tmp/haml$$.html
+haml "$@" > $OUT
+,b $OUT
