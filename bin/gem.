@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+## Install the current dir as a gem
+def solo_glob pat
+  f = Dir[pat]
+  if f.size != 1
+    warn "I expect exactly one #{pat} (found: #{f.join ' '})."
+    exit 1
+  end
+  f[0]
+end
+system 'gem', 'build', solo_glob('*.gemspec')
+system 'gem', 'install', solo_glob('*.gem')
