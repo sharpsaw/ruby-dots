@@ -14,8 +14,11 @@ git-clone-or-update() {
 init-dotfiles() {
     for n in ~/.bash_profile ~/.zshenv; do
         if ! grep /.rbenv/shims $n >/dev/null 2>&1; then
-            echo Adding .rbenv PATH line to $n
-            echo '[ -d ~/.rbenv ] && ...path-prepend ~/.rbenv/shims' >> $n
+            echo Adding .rbenv PATH lines to $n
+            cat << EOT >> $n
+[ -d ~/.rbenv ] && (
+    ...path-prepend ~/.rbenv/bin; ...path-prepend ~/.rbenv/shims )
+EOT
         fi
         if ! grep 'rbenv init' $n >/dev/null 2>&1; then
             echo Adding rbenv init line to $n
