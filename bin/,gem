@@ -6,6 +6,9 @@ if [[ $1 = install ]]; then
     tmpfile=/tmp/gem-rdoc-$$
     (gem rdoc --all &> $tmpfile && rm $tmpfile) &
     disown
+elif [[ $1 = . ]]; then
+    gem build *.gemspec
+    gem install *.gem
 else
     gem "$@"
 fi
