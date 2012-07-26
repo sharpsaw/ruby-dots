@@ -1,7 +1,8 @@
 # vim:ft=ruby
 Pry.config.theme = 'vim-detailed'
 
-def m o; o.methods.sort - Object.methods end
+# Should be in pry-de
+Pry.commands.command 'r' do run 'history --replay -1' end
 
 # Follow pry-doc further, e.g.:
 # $ [].push
