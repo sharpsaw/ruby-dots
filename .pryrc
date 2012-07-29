@@ -3,6 +3,9 @@ Pry.config.theme = 'vim-detailed'
 
 # Should be in pry-de
 Pry.commands.command 'r' do run 'history --replay -1' end
+Pry.commands.alias_command 'c', 'continue'
+Pry.commands.alias_command 's', 'step'
+Pry.commands.alias_command 'n', 'next'
 
 # Follow pry-doc further, e.g.:
 # $ [].push
