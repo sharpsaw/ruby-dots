@@ -1,0 +1,3 @@
+#!/bin/sh -xe
+## Edit the gem given as an arg.
+bundle open "$@"
