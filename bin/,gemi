@@ -1,2 +1,6 @@
-#!/bin/sh -xe
-,gem install "$@"
+#!/bin/bash -xe
+if [[ $# == 0 || '.' == "$1" ]]; then
+   ,gem .
+else
+   ,gem install "$@"
+fi
