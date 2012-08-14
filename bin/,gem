@@ -8,7 +8,7 @@ if [[ $1 = install ]]; then
     disown
 elif [[ $1 = . ]]; then
     gem build *.gemspec
-    gem install *.gem
+    ,gemi *.gem
 else
     gem "$@"
 fi
