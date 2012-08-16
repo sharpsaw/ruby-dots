@@ -1,4 +1,4 @@
-for n in ~/.gems ~/gems `gem environment gempath | sed 's/:/ /g'`; do
+for n in ~/.gems ~/gems `ruby -e puts\ Gem.dir 2>/dev/null`; do
     [ -d $n/bin ] && ...path-prepend $n/bin
 done
 # vi:ft=sh
