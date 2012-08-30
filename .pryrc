@@ -1,6 +1,13 @@
 # vim:ft=ruby
 Pry.config.theme = 'vim-detailed'
 
+begin
+  require 'awesome_print'
+  Pry.print = proc { |output, value| output.puts value.ai }
+rescue LoadError
+  puts "Consider gem-install awesome_print"
+end
+
 # Should be in pry-de
 Pry.commands.command 'r' do run 'history --replay -1' end
 Pry.commands.alias_command 'c', 'continue'
@@ -9,8 +16,8 @@ Pry.commands.alias_command 'n', 'next'
 
 # Follow pry-doc further, e.g.:
 # $ [].push
-# c 'rb_ary_modify'
-def c m
+# C 'rb_ary_modify'
+def C m
 # Depends on something like the following:
   # mkdir ~/pkg
   # git clone  https://github.com/ruby/ruby.git
