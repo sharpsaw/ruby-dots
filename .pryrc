@@ -14,16 +14,31 @@ Pry.commands.alias_command 'c', 'continue'
 Pry.commands.alias_command 's', 'step'
 Pry.commands.alias_command 'n', 'next'
 
+# Should be in pry-docmore.
 # Follow pry-doc further, e.g.:
 # $ [].push
-# C 'rb_ary_modify'
-def C m
-# Depends on something like the following:
-  # mkdir ~/pkg
-  # git clone  https://github.com/ruby/ruby.git
-  # cd ruby && ctags -R
-  Dir.chdir ENV['HOME']+'/pkg/ruby' do
-    system 'vim', '-t', m
+# C rb_ary_modify
+Pry.commands.create_command 'C' do
+  def process
+    src_dir = ENV['RUBY_SRC_DIR'] || ENV['HOME']+'/pkg'
+    unless Dir.exist? src_dir
+      puts "Need either $RUBY_SRC_DIR (env var) or ~/pkg/ to exist"
+      return
+    end
+    ruby_dir = src_dir + '/ruby'
+    unless Dir.exist? ruby_dir
+      puts "Need ruby source checkout."
+      ruby_repo = 'https://github.com/ruby/ruby.git'
+      puts "Consider: .git clone --depth 1 #{ruby_repo} #{ruby_dir} # takes <1m"
+    end
+    Dir.chdir ruby_dir do
+      unless File.exist? 'tags'
+        puts "Building tags file with ctags -R"
+        system 'ctags -R'
+      end
+      # Note: if you know of how to do this on another editor, I'll respect ENV
+      system 'vim', '-t', arg_string
+    end
   end
 end
 
