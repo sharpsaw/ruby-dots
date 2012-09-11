@@ -14,6 +14,8 @@ Pry.commands.alias_command 'c', 'continue'
 Pry.commands.alias_command 's', 'step'
 Pry.commands.alias_command 'n', 'next'
 
+Pry.commands.command ',l' do run 'edit lib' end
+
 # Should be in pry-docmore.
 # Follow pry-doc further, e.g.:
 # $ [].push
