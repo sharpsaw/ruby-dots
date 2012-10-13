@@ -1,0 +1,3 @@
+#!/bin/sh -xe
+## Spawn a shell in the dir of a gem. (Note: Requires a very recent pry)
+pry -e "gem-cd $1" -e .$SHELL
