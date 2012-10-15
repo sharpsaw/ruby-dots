@@ -1,13 +1,17 @@
-require 'capistrano_colors'
+begin
+  require 'capistrano_colors'
 
-# Just a few examples from https://github.com/stjernstrom/capistrano_colors
-capistrano_color_matchers = [
-  { match: /command finished/,       color: :hide,    prio: 10 },
-  { match: /executing command/,      color: :blue,    prio: 10, },
-  { match: /^transaction: commit$/,  color: :magenta, prio: 10, },
-  { match: /git/,                    color: :white,   prio: 20, },
-  { match: /\*\* \[\S+ :: [^:]+:?\d*\]/, color: :green, prio: 10 },
-]
+  # Just a few examples from https://github.com/stjernstrom/capistrano_colors
+  capistrano_color_matchers = [
+    { :match => /command finished/,           :color => :hide,    :prio => 10 },
+    { :match => /executing command/,          :color => :blue,    :prio => 10 },
+    { :match => /^transaction: commit$/,      :color => :magenta, :prio => 10 },
+    { :match => /git/,                        :color => :white,   :prio => 20 },
+    { :match => /\*\* \[\S+ :: [^:]+:?\d*\]/, :color => :green,   :prio => 10 },
+  ]
 
-colorize capistrano_color_matchers
+  colorize capistrano_color_matchers
+rescue LoadError
+  warn "\e[33mNo capistrano_colors. :("
+end
 # vim:ft=ruby
