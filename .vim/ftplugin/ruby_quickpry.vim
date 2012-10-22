@@ -1,7 +1,10 @@
-" Add the pry debug line with \\p (or <Space><Space>p, if you mapped it)
-map <Leader><Leader>p orequire 'pry';binding.pry<esc>:w<cr>
-" …also, allow bpry<space> (or bpry<C-]>) from Insert Mode:
-iabbr bpry require 'pry';binding.pry
+" Add the pry debug line with \bp (or <Space>bp, if you did: map <Space> <Leader> )
+map <Leader>bp orequire'pry';binding.pry<esc>:w<cr>
+" Alias for one-handed operation:
+map <Leader><Leader>p <Leader>bp
+" …also, Insert Mode as bpry<space>
+iabbr bpry require'pry';binding.pry
 
-" Nab the last line from ~/.pry_history.
-map <leader>pry1 o<esc>:.!tail -1 ~/.pry_history<cr>==
+" Nab lines from ~/.pry_history (respects "count")
+nmap <Leader>pry :<C-U>read !tail -<C-R>=(v:count1 ? v:count1 : 1)<CR> ~/.pry_history<CR>
+" ↑ thanks to Houl, ZyX-i, and paradigm of #vim for all dogpiling on this one.
