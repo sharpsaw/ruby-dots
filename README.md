@@ -37,6 +37,7 @@ jjV}k!bin-docs
 * `gem.` ⇒ Install the current dir as a gem
 * `gemdoc` ⇒ Run `gem server` then open a browser on localhost (using sane-dots/bin/,b)
 * `md2html` ⇒ Convert Markdown to HTML (outputs filename.md as filename.html)
+* `trb` ⇒ Run tests via testrb
 * `viGemfile` ⇒ Analogous to 'visudo' — edit a Gemfile then run 'bundle install'
 
 Contact
