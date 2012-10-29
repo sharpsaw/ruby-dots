@@ -1,4 +1,9 @@
 # vim:ft=ruby
+if Pry.respond_to? :auto_resize!
+  Pry.auto_resize!
+else
+  warn 'Non-new pry: expect window resize failures.'
+end
 
 Pry.config.theme = 'vim-detailed'
 #Pry.config.exception_handler = proc { |_, ex, _pry_| _pry_.run_command "enter-exception" } 
