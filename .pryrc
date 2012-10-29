@@ -2,7 +2,12 @@
 if Pry.respond_to? :auto_resize!
   Pry.auto_resize!
 else
-  warn 'Non-new pry: expect window resize failures.'
+  warn 'Non-new pry: patching WINCH manually.'
+  trap :WINCH do
+    size = `stty size`.split(/\s+/).map &:to_i
+    Readline.set_screen_size *size
+    Readline.refresh_line
+  end
 end
 
 Pry.config.theme = 'vim-detailed'
