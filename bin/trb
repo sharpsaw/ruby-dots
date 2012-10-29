@@ -1,0 +1,10 @@
+#!/bin/zsh
+## Run tests via testrb
+go() bundle exec testrb -Itest -Ilib "$@"
+[ -e .rvmrc ] && source .rvmrc # I hate RVM
+if [ $# = 0 ]; then
+    setopt extendedglob
+    go test/**/*_test.rb
+else
+    go "$@"
+fi
