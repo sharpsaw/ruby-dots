@@ -1,2 +1,2 @@
 #!/bin/sh -xe
-bunde exec rake "$@"
+bundle exec rake "$@"

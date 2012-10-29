@@ -28,7 +28,7 @@ jjV}k!bin-docs
 * `,rbenvi` ⇒ Install rbenv
 * `be` ⇒ `bundle exec "$@"`
 * `beg` ⇒ `bundle exec guard "$@"`
-* `ber` ⇒ `bunde exec rake "$@"`
+* `ber` ⇒ `bundle exec rake "$@"`
 * `bui` ⇒ `if ! type bundle >/dev/null 2>&1; then`
 * `buo` ⇒ Edit the gem given as an arg.
 * `buu` ⇒ `bundle update "$@"`
