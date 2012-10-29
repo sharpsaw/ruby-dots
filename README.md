@@ -17,7 +17,7 @@ Scripts
 
 <!--
 Requires: https://github.com/sharpsaw/perl-dots (for its bin/bin-docs)
-Update by having sharpsaw/perl-dots then yy@" on the next line:
+Update by having sharpsaw/perl-dots then Y@" on the next line:
 jjV}k!bin-docs
 -->
 * `,bhaml` ⇒ Browse HAML — uses sane-dots/bin/,b to open the output from `haml`
@@ -27,10 +27,13 @@ jjV}k!bin-docs
 * `,gemu` ⇒ `,gem uninstall "$@"`
 * `,rbenvi` ⇒ Install rbenv
 * `be` ⇒ `bundle exec "$@"`
+* `beg` ⇒ `bundle exec guard "$@"`
+* `ber` ⇒ `bunde exec rake "$@"`
 * `bui` ⇒ `if ! type bundle >/dev/null 2>&1; then`
 * `buo` ⇒ Edit the gem given as an arg.
 * `buu` ⇒ `bundle update "$@"`
-* `cd-gem` ⇒ Spawn a shell in the dir of a gem. (Note: Requires a very recent pry)
+* `cd-gem` ⇒ alias to gem-cd to match the old Perl pm-cd
+* `gem-cd` ⇒ Spawn a shell in the dir of a gem.
 * `gem.` ⇒ Install the current dir as a gem
 * `gemdoc` ⇒ Run `gem server` then open a browser on localhost (using sane-dots/bin/,b)
 * `md2html` ⇒ Convert Markdown to HTML (outputs filename.md as filename.html)
