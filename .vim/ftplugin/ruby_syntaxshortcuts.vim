@@ -22,7 +22,14 @@ map <Leader>0 :call WeHateSuperfluousParens()<cr>
 
 function! FlipOneLinerBlockToWordyOne()
   s/{\(\s*|[^|]\+|\)/do\1\r/
+  " TODO: Make this round-trip. Currently doesn't handle cuddled "}"
   call feedkeys("/\s*}\<cr>bbeelcf}\<cr>end\<esc>=%j$")
 endfu
 map <leader>{ :call FlipOneLinerBlockToWordyOne()<cr>
-" TODO map <leader>} 
+
+function! ChopWordyBlockDownToOneLiner()
+  ?do
+  s/ do / {
+  call feedkeys("v/end\<cr>JC}\<esc>")
+endfun
+map <leader>} :call ChopWordyBlockDownToOneLiner()<cr>
