@@ -1,4 +1,0 @@
-warn 'Guarding guard.'
-Pry.hooks.add_hook :before_eval, :guard_pause do Guard.listener.pause end
-Pry.hooks.add_hook :after_eval, :guard_unpause do Guard.listener.unpause end
-# vim:ft=ruby
