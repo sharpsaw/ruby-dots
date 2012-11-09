@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+## Shows chars-per-line (after stripping comments)
+$*.each do |f|
+  code = File.read(f).gsub /#.*/, '' # A bit naïve, but good enough.
+  lines = code.split(/\n/).size
+  chars = code.size
+  puts "%f - %s" % [chars.to_f/lines, f]
+end
