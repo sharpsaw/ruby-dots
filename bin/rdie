@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 file_line = ARGV[0].dup
-file_line.gsub! ':in', ''
+file_line.gsub! /:(?:in)?$/, ''
 file, line = file_line.split ':', 2
 unless File.exist? file
   warn file + ' does not exist'
