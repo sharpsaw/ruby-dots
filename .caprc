@@ -12,6 +12,6 @@ begin
 
   colorize capistrano_color_matchers
 rescue LoadError
-  warn "\e[33mNo capistrano_colors. :("
+  # warn "\e[33mNo capistrano_colors. :("
 end
 # vim:ft=ruby
