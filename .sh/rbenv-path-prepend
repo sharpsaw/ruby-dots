@@ -1,2 +1,3 @@
-[ -d ~/.rbenv ] && (
-    ...path-prepend ~/.rbenv/bin; ...path-prepend ~/.rbenv/shims )
+[ -d ~/.rbenv ] && \
+    ...path-prepend ~/.rbenv/bin && \
+    ...path-prepend ~/.rbenv/shims
