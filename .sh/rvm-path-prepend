@@ -1,1 +1,0 @@
-[ -d ~/.rvm ] && ...path-prepend ~/.rvm/bin || true

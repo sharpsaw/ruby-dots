@@ -1,0 +1,24 @@
+for n in ~/.gems ~/gems `ruby -e puts\ Gem.dir 2>/dev/null`; do
+    [ -d $n/bin ] && ...path-prepend $n/bin
+done
+
+if [ -s "$HOME/.rvm/scripts/rvm" ]; then
+    [ -d ~/.rvm ] && ...path-prepend ~/.rvm/bin
+    . "$HOME/.rvm/scripts/rvm" # Load RVM function
+    unset GEM_HOME # I have no idea why, but ~/.rvm/bin/bundle demands this
+fi
+
+,rbenvi() {
+    command ,rbenvi "$@"
+    [ -n "$SHELLNAME" ] && exec $SHELLNAME || echo "SHELLNAME not set."
+}
+
+[ -d ~/.rbenv ] && \
+    ...path-prepend ~/.rbenv/bin && \
+    ...path-prepend ~/.rbenv/shims
+
+type rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
+
+true
+
+# vim:ft=sh

@@ -1,6 +1,0 @@
-if [ -s "$HOME/.rvm/scripts/rvm" ]; then
-    . "$HOME/.rvm/scripts/rvm" # Load RVM function
-    unset GEM_HOME # I have no idea why, but ~/.rvm/bin/bundle demands this
-fi
-
-# vim:ft=sh
