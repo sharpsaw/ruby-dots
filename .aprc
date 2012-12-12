@@ -1,4 +1,4 @@
 AwesomePrint.defaults = {
-    raw: true, # causes objects to get printed (and recursively so)
+    :raw => true, # causes objects to get printed (and recursively so)
 }
 # vim:ft=ruby
