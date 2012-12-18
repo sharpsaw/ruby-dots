@@ -13,3 +13,6 @@
 [submodule "vim-rake"]
 	path = .vim/bundle/vim-rake
 	url = https://github.com/tpope/vim-rake
+[submodule "vim-ruby-refactoring"]
+	path = .vim/bundle/ruby-refactoring
+	url = https://github.com/rking/vim-ruby-refactoring
