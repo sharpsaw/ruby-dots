@@ -1,5 +1,6 @@
 #!/bin/bash -xe
 ## Analogous to 'visudo' — edit a Gemfile then run 'bundle install'
-${VISUAL:-${EDITOR:-vim}} Gemfile
+[ -e *.gemspec ] && extra='*.gemspec -o'
+vim Gemfile $extra
 # don't forget vim's :cq to cancel the next step!
 bundle install
