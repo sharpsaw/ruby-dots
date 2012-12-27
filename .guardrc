@@ -1,0 +1,4 @@
+Pry.hooks.get_hook :after_eval, :restore_visiblity or
+  Pry.hooks.add_hook :after_eval, :restore_visiblity do system 'stty echo' end
+load Dir.home+'/.pryrc'
+# vim:ft=ruby
