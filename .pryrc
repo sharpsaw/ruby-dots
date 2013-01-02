@@ -1,4 +1,10 @@
 # vim:ft=ruby
+if RUBY_VERSION[/^1.8/]
+  def Readline.point; end # Fix for pry-editline incompatibility
+  def Readline.set_screen_size *args; end # Fix for auto_resize!
+  Pry.plugins['docmore'].disable!
+end
+
 if Pry.respond_to? :auto_resize!
   Pry.auto_resize!
 else
