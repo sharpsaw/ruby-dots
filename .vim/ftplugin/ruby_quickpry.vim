@@ -10,6 +10,7 @@ map <f3> :wa<cr>:!kill-pry-rescue<cr>
 
 " Nab lines from ~/.pry_history (respects "count")
 nmap <Leader>pry :<c-u>let pc = (v:count1 ? v:count1 : 1)<cr>:read !tail -<c-r>=pc<cr> ~/.pry_history<cr>:.-<c-r>=pc-1<cr>:norm <c-r>=pc<cr>==<cr>
+nmap <Leader>ph <Leader>pry
 " ↑ thanks to Houl, ZyX-i, and paradigm of #vim for all dogpiling on this one.
 
 nmap <Leader>rib of = File.open ENV['HOME']+'/ribson', 'w'; set_trace_func -> *args { f.puts [args, args[4].send(:local_variables) ].inspect }<esc>:w<cr>
