@@ -16,3 +16,9 @@
 [submodule "vim-ruby-refactoring"]
 	path = .vim/bundle/ruby-refactoring
 	url = https://github.com/rking/vim-ruby-refactoring
+[submodule ".vim/bundle/vim-ruby"]
+	path = .vim/bundle/vim-ruby
+	url = https://github.com/vim-ruby/vim-ruby/
+[submodule ".vim/bundle/splitjoin"]
+	path = .vim/bundle/splitjoin
+	url = git://github.com/AndrewRadev/splitjoin.vim.git
