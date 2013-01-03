@@ -20,22 +20,16 @@ def watch dirs = %w(lib app test spec)
   subdirs = dirs.map do |e|
     Dir[e+'/**/'].find_all{|d| Dir.exists? d}
   end.flatten
-  unless subdirs
-    warn "Not watching; #{dirs.join ' '} missing."
-    return
-  end
+  fail "Not watching; #{dirs.join ' '} missing." if subdirs.size.zero?
   require 'listen'
   Thread.new do
     Listen.to *subdirs, filter: /\.rb$/ do |change, add, remove|
       [change, add].flatten.uniq.each do |rb|
         begin
           simplified_rb = rb.sub /^#{Regexp.escape(Dir.pwd)}\//, ''
-          puts "\n['\e[36;1m#{simplified_rb}\e[0m']"
-          if block_given?
-            yield rb if block_given?
-          else
-            load rb
-          end
+          puts "\n[load '\e[36;1m#{simplified_rb}\e[0m']"
+          load rb
+          yield rb if block_given?
         rescue => e
           warn "\e[31m#{e}\e[0m"
         end
@@ -45,6 +39,7 @@ def watch dirs = %w(lib app test spec)
 rescue => e
   warn e
 end
+
 
 Pry.config.theme = 'vim-detailed'
 #Pry.config.exception_handler = proc { |_, ex, _pry_| _pry_.run_command "enter-exception" } 
