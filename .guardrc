@@ -1,2 +1,2 @@
-load Dir.home+'/.pryrc'
+load ENV['HOME']+'/.pryrc'
 # vim:ft=ruby
