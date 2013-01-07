@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
+VERSION_FILE_PATTERN = 'lib/*/version.rb'
+version_file = Dir.glob(VERSION_FILE_PATTERN).first
+# TODO: better failure "Could not find any #{VERSION_FILE_PATTERN}" unless ___
+input = File.read version_file
+VERSION_PATTERN = /
+  (?<assignment>VERSION\s*=\s*)
+  (?<quote>["'])
+  (?<version_leader>(?:\d+\.){1,2})
+  (?<bumper>\d+)
+  \g<quote>
+/x
+VERSION_PATTERN =~ input or fail "Couldn't find 'VERSION = …' in:\n#{input}\n"
+output = input.sub VERSION_PATTERN do
+  [
+    $~[:assignment],
+    $~[:quote],
+    $~[:version_leader],
+    $~[:bumper].to_i.succ,
+    $~[:quote]
+  ].join.tap do |result|
+    puts "#{$&} ⇒ #{result}"
+  end
+end
+File.write version_file, output
