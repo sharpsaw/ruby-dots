@@ -16,35 +16,8 @@ else
   end
 end
 
-def watch dirs = %w(lib app test spec)
-  subdirs = dirs.map do |e|
-    Dir[e+'/**/'].find_all{|d| Dir.exists? d}
-  end.flatten
-  fail "Not watching; #{dirs.join ' '} missing." if subdirs.size.zero?
-  require 'listen'
-  Thread.new do
-    Listen.to *subdirs, filter: /\.rb$/ do |change, add, remove|
-      [change, add].flatten.uniq.each do |rb|
-        begin
-          simplified_rb = rb.sub /^#{Regexp.escape(Dir.pwd)}\//, ''
-          puts "\n[load '\e[36;1m#{simplified_rb}\e[0m']"
-          load rb
-          yield rb if block_given?
-        rescue => e
-          warn "\e[31m#{e}\e[0m"
-        end
-      end
-    end
-  end
-rescue => e
-  warn e
-end
-
-
 Pry.config.theme = 'vim-detailed'
 #Pry.config.exception_handler = proc { |_, ex, _pry_| _pry_.run_command "enter-exception" } 
-
-#begin; require 'development'; rescue LoadError; puts "No `development` gem!" end
 
 # TODO work with this
 # http://www.igvita.com/2008/12/11/ruby-ast-for-fun-and-profit/
