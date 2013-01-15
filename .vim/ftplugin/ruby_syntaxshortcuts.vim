@@ -4,6 +4,11 @@ function! Ruby19Hashify()
 endfunction
 map <Leader>9 :call Ruby19Hashify()<cr>
 
+function! Ruby18Hashify()
+  silent! s/\v(\S+): /:\1 => /g
+endfunction
+map <Leader>8 :call Ruby18Hashify()<cr>
+
 function! SingleQuotify()
   silent! s/"/'/g
 endfunction
