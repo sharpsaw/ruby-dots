@@ -1,11 +1,17 @@
-#!/bin/sh -xe
+#!/usr/bin/env ruby
 ## Spawn a shell in the dir of a gem.
-gem=$1
-if [ -e Gemfile ]; then
-    cd $(bundle show $gem)
-else
-    cd `ruby -r$gem -e \
-      "print File.expand_path \\$LOADED_FEATURES.grep(/$gem.rb/)[0] + '../'*3"`
-fi
-: Exit this shell to go back to where you were
-$SHELL
+gem = ARGV[0]
+dir =
+  if File.exists? 'Gemfile'
+    `bundle show $gem`.chomp
+  else
+    gemspecs = Gem::Specification.find_all_by_name(gem)
+    fail "Couldn't find #{gem}" if gemspecs.empty?
+    gemspecs.sort_by(&:version).first.full_gem_path
+  end
+puts <<EOT
+\e[32;1m#{dir}\e[0m
+(^d this shell to go back to where you were)
+EOT
+Dir.chdir dir
+system ENV['SHELL']
