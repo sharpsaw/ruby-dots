@@ -1,2 +1,2 @@
 #!/bin/sh -x
-bundle exec guard "$@"
+. bundle-try-alt-file; bundle exec guard "$@"

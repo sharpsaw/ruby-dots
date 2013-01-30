@@ -1,2 +1,2 @@
 #!/bin/sh -xe
-bundle exec "$@"
+. bundle-try-alt-file; bundle exec "$@"

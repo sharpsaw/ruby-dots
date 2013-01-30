@@ -1,5 +1,7 @@
 #!/bin/sh -xe
-if ! type bundle >/dev/null 2>&1; then
+## bundle install
+. bundle-try-alt-file
+if ! bundle --version >/dev/null 2>&1; then
     ,gemi bundler
     : Now, update \$PATH by doing exec ${SHELL##*/}
 else

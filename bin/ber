@@ -1,2 +1,2 @@
 #!/bin/sh -xe
-bundle exec rake "$@"
+. bundle-try-alt-file; bundle exec rake "$@"

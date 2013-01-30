@@ -1,2 +1,2 @@
 #!/bin/sh -xe
-bundle update "$@"
+. bundle-try-alt-file; bundle update "$@"

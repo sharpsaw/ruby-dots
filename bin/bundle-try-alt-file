@@ -1,0 +1,6 @@
+#!/bin/sh
+alt=Gemfile.me
+if [ -e $alt ]; then
+    echo "\033[35mUsing $alt\033[0m" >&2
+    export BUNDLE_GEMFILE=$alt
+fi

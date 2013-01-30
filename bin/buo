@@ -1,3 +1,4 @@
 #!/bin/sh -xe
 ## Edit the gem given as an arg.
+. bundle-try-alt-file
 bundle open "$@"
