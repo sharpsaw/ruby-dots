@@ -1,8 +1,11 @@
 #!/bin/sh -xe
 ## Spawn a shell in the dir of a gem.
+gem=$1
 if [ -e Gemfile ]; then
-    cd $(bundle show $1)
-    zsh
+    cd $(bundle show $gem)
 else
-    pry -e "gem-cd $1" -e .$SHELL
+    cd `ruby -r$gem -e \
+      "print File.expand_path \\$LOADED_FEATURES.grep(/$gem.rb/)[0] + '../'*3"`
 fi
+: Exit this shell to go back to where you were
+$SHELL
