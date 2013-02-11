@@ -3,7 +3,7 @@
 gem = ARGV[0]
 dir =
   if File.exists? 'Gemfile'
-    `bundle show $gem`.chomp
+    `bundle show #{gem}`.chomp
   else
     gemspecs = Gem::Specification.find_all_by_name(gem)
     fail "Couldn't find #{gem}" if gemspecs.empty?
