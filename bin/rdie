@@ -6,4 +6,4 @@ unless File.exist? file
   warn file + ' does not exist'
   exit 1
 end
-system 'vim', file, '+' + line
+system 'vim', file, "+#{line}"
