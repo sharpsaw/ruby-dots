@@ -11,6 +11,7 @@ git-clone-or-update() {
     fi
 }
 
+cd
 git-clone-or-update git://github.com/sstephenson/rbenv.git .rbenv
 mkdir -p ~/.rbenv/plugins
     cd ~/.rbenv/plugins
