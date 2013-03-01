@@ -1,2 +1,3 @@
 #!/bin/sh -xe
 for n in development test; do RAILS_ENV=$n bundle exec rake db:migrate"$@"; done
+# TODO: Make this check for a ":" in the arg, then not prepend 'db:migrate'
