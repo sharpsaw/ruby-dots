@@ -1,4 +1,8 @@
 # vim:ft=ruby
+
+# Workaround to fix invisible prompting. TODO: verify & upstream into pry
+STDOUT.echo = true if STDOUT.respond_to? :echo=
+
 if RUBY_VERSION[/^1.8/]
   def Readline.point; end # Fix for pry-editline incompatibility
   def Readline.set_screen_size *args; end # Fix for auto_resize!
