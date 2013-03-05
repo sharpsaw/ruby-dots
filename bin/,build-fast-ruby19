@@ -1,2 +1,2 @@
 #!/bin/sh -xe
-rbenv install ~/.../src/ruby1.9.3-with-falcon
+rbenv install "$@" ~/.../src/ruby-dots/ruby1.9.3-with-falcon
