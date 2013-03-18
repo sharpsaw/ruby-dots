@@ -1,4 +1,7 @@
-# Run as: rbenv install build-fast-ruby
+# Usage:
+# wget https://raw.github.com/sharpsaw/ruby-dots/master/ruby1.9.3-with-falcon
+# rbenv install ruby1.9.3-with-falcon
+# rbenv global  ruby1.9.3-with-falcon
 build_package_combined_patch() {
   local package_name="$1"
 
