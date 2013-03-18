@@ -1,0 +1,2 @@
+#!/bin/sh -xe
+bundle show --paths | xarg ag "$@"
