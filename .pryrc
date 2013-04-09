@@ -25,13 +25,20 @@ Pry.config.theme = 'vim-detailed'
 
 # TODO work with this
 # http://www.igvita.com/2008/12/11/ruby-ast-for-fun-and-profit/
-def d c
-  require 'parsetree'
-  ParseTree.translate c
-end
-def s c
-  require 'ruby4ruby'
-  SexpProcessor.new.process d(c)
+# def d c
+#   require 'parsetree'
+#   ParseTree.translate c
+# end
+# def s c
+#   require 'ruby4ruby'
+#   SexpProcessor.new.process d(c)
+# end
+
+# https://github.com/pry/pry/issues/866
+class Pry
+  def file
+    current_context.eval '__FILE__'
+  end
 end
 
 def hammit haml
