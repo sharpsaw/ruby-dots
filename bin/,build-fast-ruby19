@@ -1,2 +1,9 @@
 #!/bin/sh -xe
+## Install ruby1.9.3 with Falcon patchery
+type rbenv >/dev/null 2>&1 || ,rbenvi
+if ! [ -e /usr/include/yaml.h -o -z "$have_yaml" ]; then
+    echo "No /usr/include/yaml.h found, and env var have_yaml not set"
+    exit 1
+fi
+# TODO: detect need for autoconf and build-essential
 rbenv install "$@" ~/.../src/ruby-dots/ruby1.9.3-with-falcon
