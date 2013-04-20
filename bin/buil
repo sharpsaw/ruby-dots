@@ -1,0 +1,3 @@
+#!/bin/sh -xe
+## Because `bundle package --all` is spiffy.
+bundle --local
