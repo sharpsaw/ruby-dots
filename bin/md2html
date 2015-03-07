@@ -1,4 +1,4 @@
-#!/bin/env ruby
+#!/usr/bin/env ruby
 # Convert Markdown to HTML (outputs filename.md as filename.html)
 require 'rdiscount'
 require 'optparse'
